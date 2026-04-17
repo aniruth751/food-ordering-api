@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foodApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body ng-controller="LoginController">
+
+<div class="login-container">
+
+    <h2>Login with OTP</h2>
+
+    <!-- STEP 1 -->
+    <div ng-show="step === 1">
+        <input type="text" ng-model="user.name" placeholder="Enter your name">
+        <input type="text" ng-model="user.mobile" placeholder="Enter mobile number">
+
+        <button ng-click="sendOtp()">Send OTP</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div ng-show="step === 2">
+        <input type="number" ng-model="otp" placeholder="Enter OTP">
+
+        <button ng-click="verifyOtp()">Verify OTP</button>
+
+        <!-- TIMER -->
+        <p class="timer" ng-if="timer > 0">
+            Resend OTP in {{timer}} sec
+        </p>
+
+        <!-- RESEND BUTTON -->
+        <button ng-click="resendOtp()" ng-disabled="timer > 0">
+            Resend OTP
+        </button>
+    </div>
+
+    <!-- ERROR -->
+    <p class="error">{{error}}</p>
+
+</div>
+
+<script src="login.js"></script>
+
+</body>
+</html>

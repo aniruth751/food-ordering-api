@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="foodApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Food Ordering App</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller="FoodController">
+
+<!-- 🔐 LOGIN CHECK -->
+<script>
+if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+}
+</script>
+
+<!-- 🔓 LOGOUT + USER -->
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <h3>Welcome, {{username}}</h3>
+    <button ng-click="logout()">Logout</button>
+</div>
+
+<h1>Food Ordering App</h1>
+
+<!-- PRODUCT FORM -->
+<div class="form">
+    <input type="text" ng-model="newProduct.name" placeholder="Food Name">
+    <input type="number" ng-model="newProduct.price" placeholder="Price">
+    <input type="text" ng-model="newProduct.imageUrl" placeholder="Image URL">
+
+    <button ng-click="addProduct()">Add Food</button>
+    <button ng-click="updateProduct()">Update Food</button>
+</div>
+
+<hr>
+
+<!-- MENU -->
+<h2>Menu</h2>
+
+<div class="grid">
+    <div class="card" ng-repeat="p in products">
+
+        <img ng-src="{{p.imageUrl}}" alt="food image">
+
+        <h3>{{p.name}}</h3>
+        <p>₹ {{p.price}}</p>
+
+        <button ng-click="addToCart(p)">Add to Cart</button>
+        <button ng-click="editProduct(p)">Edit</button>
+
+    </div>
+</div>
+
+<hr>
+
+<!-- CART -->
+<h2>Cart</h2>
+
+<div class="cart">
+    <div ng-repeat="c in cart track by $index">
+        <p>{{c.name}} - ₹ {{c.price}}</p>
+        <button ng-click="removeFromCart($index)">Remove</button>
+    </div>
+</div>
+
+<h3>Total: ₹ {{getTotal()}}</h3>
+
+<button class="checkout" ng-click="checkout()">Checkout</button>
+
+<script src="app.js"></script>
+
+</body>
+</html>

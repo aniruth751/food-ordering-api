@@ -1,0 +1,73 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 20px;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 15px;
+    background: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+button:hover {
+    background: darkgreen;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.card {
+    background: white;
+    padding: 10px;
+    width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart {
+    background: white;
+    width: 300px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.checkout {
+    background: blue;
+}
+
+.checkout:hover {
+    background: darkblue;
+}
